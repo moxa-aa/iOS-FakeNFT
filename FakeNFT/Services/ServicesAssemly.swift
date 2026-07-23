@@ -21,4 +21,11 @@ final class ServicesAssembly {
     var collectionService: CollectionService {
         CollectionServiceImpl(networkClient: networkClient, nftService: nftService)
     }
+
+    // Stubs are stored (not computed) so in-memory favorites/cart survive across accesses
+    private let profileServiceStub = ProfileServiceStub()
+    private let orderServiceStub = OrderServiceStub()
+
+    var profileService: ProfileService { profileServiceStub }
+    var orderService: OrderService { orderServiceStub }
 }

@@ -89,7 +89,7 @@ final class CatalogViewModelImpl: CatalogViewModel {
         }
     }
 
-    // Sort choice persisted in UserDefaults; default = by NFT count (criterion).
+    // Sort choice persisted in UserDefaults; default = by NFT count (criterion)
     private var sortOption: CatalogSortOption {
         get {
             let raw = UserDefaults.standard.string(forKey: Self.sortKey)
@@ -101,7 +101,7 @@ final class CatalogViewModelImpl: CatalogViewModel {
     }
     private static let sortKey = "catalogSortOption"
 
-    // cover is a String (Cyrillic path). Try raw, fall back to percent-encoding.
+    // cover is a String (Cyrillic path). Try raw, fall back to percent-encoding
     private static func makeURL(from string: String) -> URL? {
         if let url = URL(string: string) { return url }
         return
