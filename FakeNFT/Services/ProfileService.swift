@@ -1,7 +1,7 @@
 import Foundation
 
 // Favorites are liked NFT ids. Stub, replaced by the shared ProfileService
-// from the Profile epic at integration (PR #6, epic/profile-module-1)
+// from the Profile epic at integration
 protocol ProfileService {
     func loadLikes(completion: @escaping (Result<[String], Error>) -> Void)
     func updateLikes(_ likes: [String], completion: @escaping (Result<[String], Error>) -> Void)

@@ -5,11 +5,6 @@ enum CatalogState {
     case failed(Error)
 }
 
-enum CatalogSortOption: String {
-    case name
-    case nftCount
-}
-
 // MARK: - Protocol
 
 protocol CatalogViewModel {
@@ -29,24 +24,26 @@ final class CatalogViewModelImpl: CatalogViewModel {
     var onStateChange: ((CatalogState) -> Void)?
 
     private let service: CollectionService
+    private let sortStorage: CatalogSortStorage
     private var collections: [NftCollection] = []
 
     private var state: CatalogState = .initial {
         didSet { onStateChange?(state) }
     }
 
-    init(service: CollectionService) {
+    init(service: CollectionService, sortStorage: CatalogSortStorage) {
         self.service = service
+        self.sortStorage = sortStorage
     }
 
     var numberOfCollections: Int { collections.count }
-    var currentSort: CatalogSortOption { sortOption }
+    var currentSort: CatalogSortOption { sortStorage.sortOption }
 
     func viewDidLoad() { loadCollections() }
     func retry() { loadCollections() }
 
     func setSort(_ option: CatalogSortOption) {
-        sortOption = option
+        sortStorage.sortOption = option
         applySort()
         state = .content  // signal VC to reload rows
     }
@@ -55,7 +52,7 @@ final class CatalogViewModelImpl: CatalogViewModel {
         let collection = collections[index]
         return CatalogCellViewModel(
             name: collection.name,
-            coverURL: Self.makeURL(from: collection.cover),
+            coverURL: collection.coverImageUrlString.asURL,
             nftCount: collection.nfts.count
         )
     }
@@ -78,7 +75,7 @@ final class CatalogViewModelImpl: CatalogViewModel {
     }
 
     private func applySort() {
-        switch sortOption {
+        switch sortStorage.sortOption {
         case .name:
             collections.sort {
                 $0.name.localizedCaseInsensitiveCompare($1.name)
@@ -87,26 +84,5 @@ final class CatalogViewModelImpl: CatalogViewModel {
         case .nftCount:
             collections.sort { $0.nfts.count > $1.nfts.count }
         }
-    }
-
-    // Sort choice persisted in UserDefaults; default = by NFT count (criterion)
-    private var sortOption: CatalogSortOption {
-        get {
-            let raw = UserDefaults.standard.string(forKey: Self.sortKey)
-            return raw.flatMap(CatalogSortOption.init(rawValue:)) ?? .nftCount
-        }
-        set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: Self.sortKey)
-        }
-    }
-    private static let sortKey = "catalogSortOption"
-
-    // cover is a String (Cyrillic path). Try raw, fall back to percent-encoding
-    private static func makeURL(from string: String) -> URL? {
-        if let url = URL(string: string) { return url }
-        return
-            string
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            .flatMap(URL.init(string:))
     }
 }

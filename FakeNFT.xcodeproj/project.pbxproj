@@ -48,7 +48,9 @@
 		3FC8C38B29D242E90081F015 /* ProductDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8C38A29D242E90081F015 /* ProductDetailsTableViewCell.swift */; };
 		3FC8C39129D2453B0081F015 /* ExamplePutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8C39029D2453B0081F015 /* ExamplePutRequest.swift */; };
 		3FC8C39329D246BA0081F015 /* DateFormatters+Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8C39229D246BA0081F015 /* DateFormatters+Presets.swift */; };
+		4D41A666B7308D9FC14C324E /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BAA41ACD2F83ADF92C943 /* String+URL.swift */; };
 		558E39E72C68CE0A00FB86AC /* NftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558E39E62C68CE0900FB86AC /* NftService.swift */; };
+		A19E4ABE9BAD09C030C378C3 /* CatalogSortStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD88733FC5783A29F587C81 /* CatalogSortStorage.swift */; };
 		B3D5727487D0F5199C3E72B0 /* NftCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB94CA5B04498FD4FCF8F4 /* NftCellViewModel.swift */; };
 		C02FB36F01648BF75F984EEF /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208B216CA8711FA239BAEA4A /* OrderService.swift */; };
 		E19CD5AB2A98B56600CA39A5 /* NftImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19CD5AA2A98B56600CA39A5 /* NftImageCollectionViewCell.swift */; };
@@ -125,7 +127,9 @@
 		423F4F4C1C512D4A78B203F0 /* CollectionAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionAssembly.swift; sourceTree = "<group>"; };
 		4DB2F0FD0F441342F239AB07 /* CollectionViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		558E39E62C68CE0900FB86AC /* NftService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftService.swift; sourceTree = "<group>"; };
+		730BAA41ACD2F83ADF92C943 /* String+URL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		8ACB94CA5B04498FD4FCF8F4 /* NftCellViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NftCellViewModel.swift; sourceTree = "<group>"; };
+		BDD88733FC5783A29F587C81 /* CatalogSortStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CatalogSortStorage.swift; sourceTree = "<group>"; };
 		E19CD5AA2A98B56600CA39A5 /* NftImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NftImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1A1B9D92AA01CE400C3AFBC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E1CD40D82A96BE7D00BE7FE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				0CFCB73F2A78002A0009A829 /* ExamplePutService.swift */,
 				32401CCEA68E395E4EA5E00D /* ProfileService.swift */,
 				208B216CA8711FA239BAEA4A /* OrderService.swift */,
+				BDD88733FC5783A29F587C81 /* CatalogSortStorage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				3F6806D629CBC50A00B4F915 /* CellsReusingUtils.swift */,
 				3FC8C39229D246BA0081F015 /* DateFormatters+Presets.swift */,
 				0CFCB74A2A780EA80009A829 /* UIView+Constraints.swift */,
+				730BAA41ACD2F83ADF92C943 /* String+URL.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -577,6 +583,8 @@
 				B3D5727487D0F5199C3E72B0 /* NftCellViewModel.swift in Sources */,
 				EBF025C429F1EDD15DFF7F89 /* CollectionViewModel.swift in Sources */,
 				FB9CE57EFD653023C7AEEE7E /* CollectionAssembly.swift in Sources */,
+				A19E4ABE9BAD09C030C378C3 /* CatalogSortStorage.swift in Sources */,
+				4D41A666B7308D9FC14C324E /* String+URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

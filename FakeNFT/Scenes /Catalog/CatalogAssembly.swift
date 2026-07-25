@@ -9,6 +9,9 @@ final class CatalogAssembly {
     }
 
     func makeViewModel() -> CatalogViewModel {
-        CatalogViewModelImpl(service: servicesAssembler.collectionService)
+        CatalogViewModelImpl(
+            service: servicesAssembler.collectionService,
+            sortStorage: servicesAssembler.catalogSortStorage
+        )
     }
 }

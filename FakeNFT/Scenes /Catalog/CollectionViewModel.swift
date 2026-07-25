@@ -68,11 +68,11 @@ final class CollectionViewModelImpl: CollectionViewModel {
 
     var header: CollectionHeaderViewModel {
         CollectionHeaderViewModel(
-            coverURL: Self.makeURL(from: collection.cover),
+            coverURL: collection.coverImageUrlString.asURL,
             title: collection.name,
             authorName: collection.author,
             description: collection.description,
-            websiteURL: Self.makeURL(from: collection.website)
+            websiteURL: collection.websiteUrlString.asURL
         )
     }
 
@@ -84,7 +84,7 @@ final class CollectionViewModelImpl: CollectionViewModel {
         return NftCellViewModel(
             id: nft.id,
             name: nft.name,
-            imageURL: nft.images.first,
+            imageURL: nft.imagesUrls.first,
             rating: nft.rating,
             price: nft.price,
             isLiked: likes.contains(nft.id),
@@ -185,14 +185,5 @@ final class CollectionViewModelImpl: CollectionViewModel {
             self.cart = Set(loadedCart)
             self.state = .content
         }
-    }
-
-    // cover/website may contain non-ASCII (Cyrillic). Try raw, then percent-encode
-    // (Mirrors CatalogViewModel.makeURL, small duplication, candidate for a shared util later)
-    private static func makeURL(from string: String) -> URL? {
-        if let url = URL(string: string) { return url }
-        return string
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            .flatMap(URL.init(string:))
     }
 }
