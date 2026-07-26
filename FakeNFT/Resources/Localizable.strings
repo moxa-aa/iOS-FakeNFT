@@ -4,3 +4,20 @@
 "Error.unknown" = "Произошла неизвестная ошибка";
 "Error.repeat" = "Повторить";
 "Error.title" = "Ошибка";
+
+"Tab.profile" = "Профиль";
+"Profile.myNfts" = "Мои NFT";
+"Profile.favoriteNfts" = "Избранные NFT";
+"Profile.aboutDeveloper" = "О разработчике";
+"Profile.edit.title" = "Редактирование профиля";
+"Profile.edit.name" = "Имя";
+"Profile.edit.description" = "Описание";
+"Profile.edit.website" = "Сайт";
+"Profile.edit.avatar" = "Сменить фото";
+"Profile.edit.placeholderName" = "Введите имя";
+"Profile.edit.placeholderDescription" = "Введите описание";
+"Profile.edit.placeholderWebsite" = "Введите сайт";
+"Profile.edit.placeholderAvatar" = "Ссылка на аватар";
+"Profile.save" = "Сохранить";
+"Profile.close" = "Закрыть";
+"Profile.cancel" = "Отмена";
