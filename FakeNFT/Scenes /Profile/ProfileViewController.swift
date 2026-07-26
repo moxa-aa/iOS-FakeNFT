@@ -56,6 +56,13 @@ final class ProfileViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+    
     // MARK: - Initialization
     
     init(viewModel: ProfileViewModelProtocol = ProfileViewModel()) {
@@ -75,6 +82,7 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupConstraints()
         bindViewModel()
+        viewModel.fetchProfile()
     }
     
     // MARK: - Setup
@@ -101,6 +109,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(descriptionLabel)
         view.addSubview(websiteButton)
         view.addSubview(tableView)
+        view.addSubview(activityIndicator)
     }
     
     private func setupConstraints() {
@@ -131,7 +140,11 @@ final class ProfileViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: websiteButton.bottomAnchor, constant: 40),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            
+            // Activity Indicator
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -153,6 +166,13 @@ final class ProfileViewController: UIViewController {
         }
         viewModel.favoriteNftsCountObservable.bind { [weak self] _ in
             self?.tableView.reloadData()
+        }
+        viewModel.isLoadingObservable.bind { [weak self] isLoading in
+            if isLoading {
+                self?.activityIndicator.startAnimating()
+            } else {
+                self?.activityIndicator.stopAnimating()
+            }
         }
     }
     
@@ -212,19 +232,16 @@ extension ProfileViewController: UITableViewDataSource {
             title = ""
         }
         
-        // Classic cell customization to support iOS 13+ without compile errors
         cell.textLabel?.text = title
         cell.textLabel?.font = .systemFont(ofSize: 17, weight: .bold)
         cell.textLabel?.textColor = .segmentActive
         
-        // Add disclosure chevron indicator
         let chevronImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         chevronImageView.tintColor = .segmentActive
         cell.accessoryView = chevronImageView
         
         cell.selectionStyle = .none
         
-        // Add custom separator line at the bottom of the cell (since we disabled native separators)
         let separator = UIView()
         separator.backgroundColor = .systemGray4
         separator.translatesAutoresizingMaskIntoConstraints = false
@@ -253,10 +270,16 @@ extension ProfileViewController: UITableViewDelegate {
         
         switch indexPath.row {
         case 0:
-            // TODO: Navigate to My NFTs (will be implemented in Module 2/3)
-            break
+            let myNftsViewModel = MyNftsViewModel(
+                profileService: viewModel.profileService,
+                nftIds: viewModel.myNftIds,
+                favoriteIds: viewModel.favoriteNftIds
+            )
+            let myNftsVC = MyNftsViewController(viewModel: myNftsViewModel)
+            myNftsVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(myNftsVC, animated: true)
         case 1:
-            // TODO: Navigate to Favorite NFTs (will be implemented in Module 2/3)
+            // Favorite NFTs will be implemented in Module 3
             break
         case 2:
             if let url = viewModel.websiteUrlObservable.value {
