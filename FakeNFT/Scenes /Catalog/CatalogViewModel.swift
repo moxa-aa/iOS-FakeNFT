@@ -15,6 +15,7 @@ protocol CatalogViewModel {
     func retry()
     func setSort(_ option: CatalogSortOption)
     func cellViewModel(at index: Int) -> CatalogCellViewModel
+    func collection(at index: Int) -> NftCollection
 }
 
 // MARK: - Impl
@@ -55,6 +56,10 @@ final class CatalogViewModelImpl: CatalogViewModel {
             coverURL: collection.coverImageUrlString.asURL,
             nftCount: collection.nfts.count
         )
+    }
+
+    func collection(at index: Int) -> NftCollection {
+        collections[index]
     }
 
     // MARK: - Private
