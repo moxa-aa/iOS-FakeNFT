@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class CollectionAssembly {
 
@@ -15,5 +15,9 @@ final class CollectionAssembly {
             profileService: servicesAssembler.profileService,
             orderService: servicesAssembler.orderService
         )
+    }
+
+    func build(collection: NftCollection) -> UIViewController {
+        CollectionViewController(viewModel: makeViewModel(collection: collection))
     }
 }
