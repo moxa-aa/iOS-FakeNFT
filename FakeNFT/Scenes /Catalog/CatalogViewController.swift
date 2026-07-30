@@ -5,7 +5,7 @@ final class CatalogViewController: UIViewController, LoadingView, ErrorView {
     private var viewModel: CatalogViewModel
     private let collectionAssembly: CollectionAssembly
 
-    internal lazy var activityIndicator = UIActivityIndicatorView()
+    lazy var activityIndicator = UIActivityIndicatorView()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -23,7 +23,7 @@ final class CatalogViewController: UIViewController, LoadingView, ErrorView {
     }()
 
     private lazy var sortButton = UIBarButtonItem(
-        image: UIImage(named: "sort"),
+        image: UIImage(resource: .sort),
         style: .plain,
         target: self,
         action: #selector(sortButtonTapped)
@@ -35,8 +35,9 @@ final class CatalogViewController: UIViewController, LoadingView, ErrorView {
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 
     override func viewDidLoad() {

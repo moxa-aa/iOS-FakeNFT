@@ -53,6 +53,7 @@
 		4D41A666B7308D9FC14C324E /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730BAA41ACD2F83ADF92C943 /* String+URL.swift */; };
 		558E39E72C68CE0A00FB86AC /* NftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558E39E62C68CE0900FB86AC /* NftService.swift */; };
 		69AB988A07C8944AE59743BA /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73027D83876B0F328836D398 /* CollectionViewController.swift */; };
+		7238CB3F9A7A95EB944EA52C /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = E342B09D6E49611008195FF0 /* Images.swift */; };
 		766BF34FD4933C0518891C4A /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2EBFEFFF75E627FF19F561 /* CatalogViewController.swift */; };
 		A19E4ABE9BAD09C030C378C3 /* CatalogSortStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD88733FC5783A29F587C81 /* CatalogSortStorage.swift */; };
 		B3D5727487D0F5199C3E72B0 /* NftCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB94CA5B04498FD4FCF8F4 /* NftCellViewModel.swift */; };
@@ -143,6 +144,7 @@
 		E1CD40D82A96BE7D00BE7FE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		E1CD40D92A96BE7D00BE7FE8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E1CD40DB2A96BECC00BE7FE8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E342B09D6E49611008195FF0 /* Images.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			children = (
 				3F478ECE29DB474E00F6D39E /* Colors.swift */,
 				3F478ED029DB476500F6D39E /* Fonts.swift */,
+				E342B09D6E49611008195FF0 /* Images.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				3C2E63E4B7BD96FBC6714AEE /* CatalogCollectionCell.swift in Sources */,
 				766BF34FD4933C0518891C4A /* CatalogViewController.swift in Sources */,
 				69AB988A07C8944AE59743BA /* CollectionViewController.swift in Sources */,
+				7238CB3F9A7A95EB944EA52C /* Images.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

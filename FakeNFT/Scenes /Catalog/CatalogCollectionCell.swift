@@ -29,15 +29,16 @@ final class CatalogCollectionCell: UITableViewCell {
         setupLayout()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return nil
     }
 
     func configure(with model: CatalogCellViewModel) {
         titleLabel.text = "\(model.name) (\(model.nftCount))"
         coverImageView.kf.setImage(
             with: model.coverURL,
-            placeholder: UIImage(systemName: "photo")
+            placeholder: UIImage.coverPlaceholder
         )
     }
 
