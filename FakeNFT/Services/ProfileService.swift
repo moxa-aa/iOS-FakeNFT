@@ -1,13 +1,14 @@
 import Foundation
 
 typealias ProfileCompletion = (Result<Profile, Error>) -> Void
-typealias NftsCompletion = (Result<[Nft], Error>) -> Void
+typealias ProfileNftsCompletion = (Result<[Nft], Error>) -> Void
 
 protocol ProfileService {
     func loadProfile(completion: @escaping ProfileCompletion)
     func updateProfile(dto: ProfileDto, completion: @escaping ProfileCompletion)
-    func loadNfts(ids: [String], completion: @escaping NftsCompletion)
+    func loadNfts(ids: [String], completion: @escaping ProfileNftsCompletion)
 }
+
 
 final class ProfileServiceImpl: ProfileService {
     private let networkClient: NetworkClient
@@ -32,7 +33,7 @@ final class ProfileServiceImpl: ProfileService {
         }
     }
 
-    func loadNfts(ids: [String], completion: @escaping NftsCompletion) {
+    func loadNfts(ids: [String], completion: @escaping ProfileNftsCompletion) {
         guard !ids.isEmpty else {
             completion(.success([]))
             return
