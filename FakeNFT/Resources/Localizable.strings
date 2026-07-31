@@ -21,3 +21,13 @@
 "Profile.save" = "Сохранить";
 "Profile.close" = "Закрыть";
 "Profile.cancel" = "Отмена";
+"Profile.myNftsEmpty" = "У вас ещё нет NFT";
+"Profile.favoriteNftsEmpty" = "У вас ещё нет избранных NFT";
+"Profile.price" = "Цена";
+"Profile.author" = "от";
+"Profile.sort.title" = "Сортировка";
+"Profile.sort.byPrice" = "По цене";
+"Profile.sort.byRating" = "По рейтингу";
+"Profile.sort.byName" = "По названию";
+"Profile.sort.close" = "Закрыть";
+
