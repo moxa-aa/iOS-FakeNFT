@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 final class FavoriteNftCell: UICollectionViewCell {
     static let identifier = "FavoriteNftCell"
@@ -11,14 +12,14 @@ final class FavoriteNftCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 12
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .systemGray6
+        imageView.backgroundColor = .imagePlaceholderBackground
         return imageView
     }()
     
     private lazy var likeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(named: "like.active") ?? UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+        let image = UIImage(named: "like.active") ?? UIImage(systemName: "heart.fill")?.withTintColor(.heartActive, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(likeTapped), for: .touchUpInside)
         return button
@@ -40,7 +41,7 @@ final class FavoriteNftCell: UICollectionViewCell {
         stack.distribution = .fillEqually
         for _ in 0..<5 {
             let starView = UIImageView(image: UIImage(systemName: "star.fill"))
-            starView.tintColor = .systemGray5
+            starView.tintColor = .starInactive
             starView.contentMode = .scaleAspectFit
             stack.addArrangedSubview(starView)
         }
@@ -76,6 +77,7 @@ final class FavoriteNftCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        nftImageView.kf.cancelDownloadTask()
         nftImageView.image = nil
         onLikeTapped = nil
     }
@@ -86,25 +88,16 @@ final class FavoriteNftCell: UICollectionViewCell {
         updateRating(nft.rating)
         
         if let url = nft.images.first {
-            loadImage(from: url)
+            nftImageView.kf.setImage(with: url)
+        } else {
+            nftImageView.image = nil
         }
-
     }
     
     private func updateRating(_ rating: Int) {
         for (index, view) in ratingStackView.arrangedSubviews.enumerated() {
             if let starView = view as? UIImageView {
-                starView.tintColor = index < rating ? .systemYellow : .systemGray5
-            }
-        }
-    }
-    
-    private func loadImage(from url: URL) {
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                DispatchQueue.main.async { [weak self] in
-                    self?.nftImageView.image = image
-                }
+                starView.tintColor = index < rating ? .ratingYellow : .starInactive
             }
         }
     }
@@ -139,3 +132,4 @@ final class FavoriteNftCell: UICollectionViewCell {
         ])
     }
 }
+

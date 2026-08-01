@@ -64,4 +64,19 @@ extension UIColor {
         ? .yaBlackDark
         : .yaBlackLight
     }
+
+    // Figma Palette
+    static let heartActive = UIColor(hexString: "F56B6C")
+    static let ratingYellow = UIColor(hexString: "FEEF00")
+    static let imagePlaceholderBackground = UIColor { traits in
+        return traits.userInterfaceStyle == .dark
+        ? UIColor(hexString: "2C2C2E")
+        : UIColor(hexString: "F7F7F8")
+    }
+    static let starInactive = UIColor { traits in
+        return traits.userInterfaceStyle == .dark
+        ? UIColor(hexString: "2C2C2E")
+        : UIColor(hexString: "F7F7F8")
+    }
 }
+

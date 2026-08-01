@@ -166,7 +166,7 @@ final class MyNftCell: UITableViewCell {
         
         let heartImage = isLiked ? "heart.fill" : "heart"
         likeButton.setImage(UIImage(systemName: heartImage), for: .normal)
-        likeButton.tintColor = isLiked ? .systemRed : .white
+        likeButton.tintColor = isLiked ? .heartActive : .white
         
         updateRating(nft.rating)
         
@@ -180,10 +180,11 @@ final class MyNftCell: UITableViewCell {
     private func updateRating(_ rating: Int) {
         for (index, subview) in starsStackView.arrangedSubviews.enumerated() {
             if let starView = subview as? UIImageView {
-                starView.tintColor = index < rating ? UIColor(red: 254/255, green: 224/255, blue: 0/255, alpha: 1) : .systemGray5
+                starView.tintColor = index < rating ? .ratingYellow : .starInactive
             }
         }
     }
+
     
     @objc private func didTapLike() {
         onLikeTapped?()
