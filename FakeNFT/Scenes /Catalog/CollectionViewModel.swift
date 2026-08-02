@@ -40,7 +40,7 @@ final class CollectionViewModelImpl: CollectionViewModel {
 
     private let collection: NftCollection
     private let collectionService: CollectionService
-    private let profileService: ProfileService
+    private let favoritesService: FavoritesService
     private let orderService: OrderService
 
     private var nfts: [Nft] = []
@@ -55,12 +55,12 @@ final class CollectionViewModelImpl: CollectionViewModel {
     init(
         collection: NftCollection,
         collectionService: CollectionService,
-        profileService: ProfileService,
+        favoritesService: FavoritesService,
         orderService: OrderService
     ) {
         self.collection = collection
         self.collectionService = collectionService
-        self.profileService = profileService
+        self.favoritesService = favoritesService
         self.orderService = orderService
     }
 
@@ -100,7 +100,7 @@ final class CollectionViewModelImpl: CollectionViewModel {
         onRowUpdate?(index)
 
         let newLikes = likes.symmetricDifference([nft.id])
-        profileService.updateLikes(Array(newLikes)) { [weak self] result in
+        favoritesService.updateLikes(Array(newLikes)) { [weak self] result in
             guard let self else { return }
             self.inFlight.remove(nft.id)
             if case .success(let updated) = result {
@@ -153,7 +153,7 @@ final class CollectionViewModelImpl: CollectionViewModel {
         }
 
         group.enter()
-        profileService.loadLikes { result in
+        favoritesService.loadLikes { result in
             lock.lock()
             switch result {
             case .success(let fetched): loadedLikes = fetched

@@ -26,10 +26,10 @@ final class ServicesAssembly {
 
     var catalogSortStorage: CatalogSortStorage { sortStorage }
 
-    // Stubs are stored (not computed) so in-memory favorites/cart survive across accesses
-    private let profileServiceStub = ProfileServiceStub()
+    // stored, not computed, so the favorites and cart kept in memory survive across accesses
+    private let favoritesServiceStub = FavoritesServiceStub()
     private let orderServiceStub = OrderServiceStub()
 
-    var profileService: ProfileService { profileServiceStub }
+    var favoritesService: FavoritesService { favoritesServiceStub }
     var orderService: OrderService { orderServiceStub }
 }

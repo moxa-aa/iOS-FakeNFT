@@ -1,13 +1,12 @@
 import Foundation
 
-// Favorites are liked NFT ids. Stub, replaced by the shared ProfileService
-// from the Profile epic at integration
-protocol ProfileService {
+// stub for likes, replaced by the shared ProfileService from the Profile epic
+protocol FavoritesService {
     func loadLikes(completion: @escaping (Result<[String], Error>) -> Void)
     func updateLikes(_ likes: [String], completion: @escaping (Result<[String], Error>) -> Void)
 }
 
-final class ProfileServiceStub: ProfileService {
+final class FavoritesServiceStub: FavoritesService {
 
     private var likes: Set<String> = []
 

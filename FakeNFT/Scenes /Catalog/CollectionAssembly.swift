@@ -12,12 +12,15 @@ final class CollectionAssembly {
         CollectionViewModelImpl(
             collection: collection,
             collectionService: servicesAssembler.collectionService,
-            profileService: servicesAssembler.profileService,
+            favoritesService: servicesAssembler.favoritesService,
             orderService: servicesAssembler.orderService
         )
     }
 
     func build(collection: NftCollection) -> UIViewController {
-        CollectionViewController(viewModel: makeViewModel(collection: collection))
+        CollectionViewController(
+            viewModel: makeViewModel(collection: collection),
+            nftDetailAssembly: NftDetailAssembly(servicesAssembler: servicesAssembler)
+        )
     }
 }
