@@ -1,7 +1,6 @@
 import Foundation
 
-// Cart is NFT ids in the order. Stub, replaced by the shared OrderService
-// from the Cart (Корзина) epic at integration
+// stub for the cart, replaced by the shared OrderService from the Cart epic
 protocol OrderService {
     func loadOrder(completion: @escaping (Result<[String], Error>) -> Void)
     func updateOrder(_ nftIds: [String], completion: @escaping (Result<[String], Error>) -> Void)

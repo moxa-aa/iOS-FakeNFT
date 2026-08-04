@@ -143,6 +143,7 @@ extension CatalogViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let collection = viewModel.collection(at: indexPath.row)
         let collectionViewController = collectionAssembly.build(collection: collection)
+        collectionViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(collectionViewController, animated: true)
     }
 }
