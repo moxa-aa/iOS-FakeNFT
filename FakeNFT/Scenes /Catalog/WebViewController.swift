@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-final class WebViewController: UIViewController, LoadingView, ErrorView {
+final class WebViewController: UIViewController, LoadingView {
 
     private let url: URL
 
@@ -39,9 +39,26 @@ final class WebViewController: UIViewController, LoadingView, ErrorView {
     private func handle(_ error: Error) {
         hideLoading()
         guard (error as NSError).code != NSURLErrorCancelled else { return }
-        showError(ErrorModel(error: error) { [weak self] in
+        let model = ErrorModel(error: error) { [weak self] in
             self?.loadPage()
+        }
+        let alert = UIAlertController(
+            title: NSLocalizedString("Error.title", comment: ""),
+            message: model.message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: model.actionText, style: .default) { _ in
+            model.action()
         })
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Error.cancel", comment: ""),
+                style: .cancel
+            ) { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            }
+        )
+        present(alert, animated: true)
     }
 
     private func setupLayout() {

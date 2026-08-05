@@ -66,7 +66,15 @@ private enum TestError: Error {
 final class CollectionViewModelTests: XCTestCase {
 
     private func makeNft(id: String, name: String = "NFT", price: Double = 1) -> Nft {
-        Nft(id: id, imagesUrls: [], name: name, rating: 3, price: price)
+        Nft(
+            id: id,
+            name: name,
+            images: [],
+            rating: 3,
+            description: "",
+            price: price,
+            author: URL(string: "https://yandex.ru")!
+        )
     }
 
     private func makeCollection(nftIds: [String]) -> NftCollection {

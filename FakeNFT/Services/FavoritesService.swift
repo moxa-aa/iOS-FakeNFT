@@ -1,23 +1,36 @@
 import Foundation
 
-// stub for likes, replaced by the shared ProfileService from the Profile epic
 protocol FavoritesService {
     func loadLikes(completion: @escaping (Result<[String], Error>) -> Void)
     func updateLikes(_ likes: [String], completion: @escaping (Result<[String], Error>) -> Void)
 }
 
-final class FavoritesServiceStub: FavoritesService {
+final class FavoritesServiceImpl: FavoritesService {
 
-    private var likes: Set<String> = []
+    private let profileService: ProfileService
+
+    init(profileService: ProfileService) {
+        self.profileService = profileService
+    }
 
     func loadLikes(completion: @escaping (Result<[String], Error>) -> Void) {
-        DispatchQueue.main.async { completion(.success(Array(self.likes))) }
+        profileService.loadProfile { result in
+            completion(result.map { $0.likes })
+        }
     }
 
     func updateLikes(_ likes: [String], completion: @escaping (Result<[String], Error>) -> Void) {
-        DispatchQueue.main.async {
-            self.likes = Set(likes)
-            completion(.success(Array(self.likes)))
+        // api does not accept empty likes, null clears them
+        let dto = ProfileDto(
+            name: nil,
+            avatar: nil,
+            description: nil,
+            website: nil,
+            nfts: nil,
+            likes: likes.isEmpty ? ["null"] : likes
+        )
+        profileService.updateProfile(dto: dto) { result in
+            completion(result.map { $0.likes })
         }
     }
 }
