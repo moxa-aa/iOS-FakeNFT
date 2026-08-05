@@ -279,8 +279,11 @@ extension ProfileViewController: UITableViewDelegate {
             myNftsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(myNftsVC, animated: true)
         case 1:
-            // Favorite NFTs will be implemented in Module 3
-            break
+            let favoritesViewModel = FavoritesViewModel(profileService: viewModel.profileService)
+            let favoritesVC = FavoritesViewController(viewModel: favoritesViewModel)
+            favoritesVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(favoritesVC, animated: true)
+
         case 2:
             if let url = viewModel.websiteUrlObservable.value {
                 openWebView(with: url)
