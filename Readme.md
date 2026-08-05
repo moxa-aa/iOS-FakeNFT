@@ -2,7 +2,9 @@
 
 ## Ссылки
 
-[Дизайн Figma](https://www.figma.com/design/Uz5G39wRRCr2mRE4SbnNla/FakeNFT--YP-)
+- [Канбан-доска проекта (GitHub Projects)](https://github.com/users/moxa-aa/projects/2/views/1)
+- [Дизайн Figma](https://www.figma.com/design/Uz5G39wRRCr2mRE4SbnNla/FakeNFT--YP-)
+- [Декомпозиция эпика «Профиль» (docs/decomposition.md)](docs/decomposition.md)
 
 ## Назначение и цели приложения
 

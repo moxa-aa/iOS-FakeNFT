@@ -32,4 +32,11 @@ final class ServicesAssembly {
 
     var favoritesService: FavoritesService { favoritesServiceStub }
     var orderService: OrderService { orderServiceStub }
+
+    var profileService: ProfileService {
+        ProfileServiceImpl(
+            networkClient: networkClient,
+            storage: nftStorage
+        )
+    }
 }

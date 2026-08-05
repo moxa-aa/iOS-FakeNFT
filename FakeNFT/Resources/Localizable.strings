@@ -4,7 +4,34 @@
 "Error.unknown" = "Произошла неизвестная ошибка";
 "Error.repeat" = "Повторить";
 "Error.title" = "Ошибка";
+
 "Sort.title" = "Сортировка";
 "Sort.byName" = "По названию";
 "Sort.byNftCount" = "По количеству NFT";
 "Sort.close" = "Закрыть";
+
+"Tab.profile" = "Профиль";
+"Profile.myNfts" = "Мои NFT";
+"Profile.favoriteNfts" = "Избранные NFT";
+"Profile.aboutDeveloper" = "О разработчике";
+"Profile.edit.title" = "Редактирование профиля";
+"Profile.edit.name" = "Имя";
+"Profile.edit.description" = "Описание";
+"Profile.edit.website" = "Сайт";
+"Profile.edit.avatar" = "Сменить фото";
+"Profile.edit.placeholderName" = "Введите имя";
+"Profile.edit.placeholderDescription" = "Введите описание";
+"Profile.edit.placeholderWebsite" = "Введите сайт";
+"Profile.edit.placeholderAvatar" = "Ссылка на аватар";
+"Profile.save" = "Сохранить";
+"Profile.close" = "Закрыть";
+"Profile.cancel" = "Отмена";
+"Profile.myNftsEmpty" = "У вас ещё нет NFT";
+"Profile.favoriteNftsEmpty" = "У вас ещё нет избранных NFT";
+"Profile.price" = "Цена";
+"Profile.author" = "от";
+"Profile.sort.title" = "Сортировка";
+"Profile.sort.byPrice" = "По цене";
+"Profile.sort.byRating" = "По рейтингу";
+"Profile.sort.byName" = "По названию";
+"Profile.sort.close" = "Закрыть";
