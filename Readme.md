@@ -5,6 +5,16 @@
 - [Канбан-доска проекта (GitHub Projects)](https://github.com/users/moxa-aa/projects/2/views/1)
 - [Дизайн Figma](https://www.figma.com/design/Uz5G39wRRCr2mRE4SbnNla/FakeNFT--YP-)
 - [Декомпозиция эпика «Профиль» (docs/decomposition.md)](docs/decomposition.md)
+- [Декомпозиция эпика «Каталог» (docs/catalog-decomposition.md)](docs/catalog-decomposition.md)
+
+## Эпики
+
+### Каталог (Сардор Рахимов)
+
+Экран каталога с коллекциями NFT и сортировкой, экран коллекции с ячейками NFT, избранное и корзина, переход на сайт автора и экран NFT.
+
+- [Скринкаст эпика](https://github.com/user-attachments/assets/b1b37f92-b019-4ed5-a346-4d3a81a2a694)
+- [Декомпозиция](docs/catalog-decomposition.md)
 
 ## Назначение и цели приложения
 
