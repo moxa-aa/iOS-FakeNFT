@@ -6,6 +6,26 @@ struct ErrorModel {
     let action: () -> Void
 }
 
+extension ErrorModel {
+
+    init(error: Error, action: @escaping () -> Void) {
+        let message: String
+        switch error {
+        case is NetworkClientError:
+            message = NSLocalizedString("Error.network", comment: "")
+        case let error as NSError where error.domain == NSURLErrorDomain:
+            message = NSLocalizedString("Error.network", comment: "")
+        default:
+            message = NSLocalizedString("Error.unknown", comment: "")
+        }
+        self.init(
+            message: message,
+            actionText: NSLocalizedString("Error.repeat", comment: ""),
+            action: action
+        )
+    }
+}
+
 protocol ErrorView {
     func showError(_ model: ErrorModel)
 }

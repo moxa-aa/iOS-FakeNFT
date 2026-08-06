@@ -59,6 +59,10 @@ extension UIColor {
         : .yaLightGrayLight
     }
 
+    static let link = UIColor(hexString: "#0A84FF")
+    static let nftLike = UIColor(hexString: "#F56B6C")
+    static let ratingActive = UIColor(hexString: "#FEEF0D")
+
     static let closeButton = UIColor { traits in
         return traits.userInterfaceStyle == .dark
         ? .yaBlackDark
